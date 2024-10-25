@@ -15,7 +15,7 @@ public class MenuUIHandler : MonoBehaviour
     private string input;
 
     private void StartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Gameplay");
     }
 
     public void SubmitName() {
@@ -32,5 +32,5 @@ public class MenuUIHandler : MonoBehaviour
         Debug.Log(input);
     }
 
-    
+
 }
