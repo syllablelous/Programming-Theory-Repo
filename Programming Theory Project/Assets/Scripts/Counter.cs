@@ -10,9 +10,11 @@ public class Counter : MonoBehaviour
     public TextMeshProUGUI enemyCount;
     public TextMeshProUGUI playerCount;
 
-    public int fallenEnemyBalls = 0;
-    public int fallenPlayerBalls = 0;
+    private int fallenEnemyBalls = 0;
+    private int fallenPlayerBalls = 0;
 
+    public int FallenEnemyBalls => fallenEnemyBalls;
+    public int FallenPlayerBalls => fallenPlayerBalls;
 
     private void Start()
     {
@@ -22,11 +24,20 @@ public class Counter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Enemy") {
-            fallenEnemyBalls += 1;
-            enemyCount.text = "Fallen Enemy Balls: " + fallenEnemyBalls;
+            IncrementEnemyCount();
         } else {
-            fallenPlayerBalls += 1;
-            playerCount.text = "Fallen Player Balls: " + fallenPlayerBalls + "/3";
+            IncrementPlayerCount();
         }
     }
+
+    public void IncrementEnemyCount() {
+        fallenEnemyBalls += 1;
+        enemyCount.text = "Fallen Enemy Balls: " + fallenEnemyBalls;
+    }
+
+    public void IncrementPlayerCount() {
+        fallenPlayerBalls += 1;
+        playerCount.text = "Fallen Player Balls: " + fallenPlayerBalls + "/3";
+    }
+
 }

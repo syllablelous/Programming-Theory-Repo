@@ -6,7 +6,7 @@ public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
 
-    public string username;
+    private string username;
 
     private void Awake() {
         if (Instance != null) {
@@ -18,8 +18,20 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void NewUsernameInput(string newUsername) {
-        MainManager.Instance.username = newUsername;
+    public string Username {
+        get {
+            return username;
+        }
+        private set {
+            username = value;
+        }
     }
-    
+
+    public void SetUsername(string newUsername) {
+        if (!string.IsNullOrEmpty(newUsername)) {
+            username = newUsername;
+        } else {
+            Debug.LogWarning("Invalid username!");
+        }
+    }
 }

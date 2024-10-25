@@ -59,7 +59,8 @@ public class PlayerController : BallController
         Debug.Log("Game Over! The player has exceeded the maximum fall limit.");
         isGameOver = true;
 
-        FindObjectOfType<SpawnManager>().GameOver();
+        // FindObjectOfType<SpawnManager>().GameOver();
+        GameManager.Instance.TriggerGameOver();
     }
 
     private void OnTriggerEnter(Collider other) {
