@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private bool isGameOver = false;
+    private int gameScore;
+
 
     private void Awake() {
         if (Instance != null) {
@@ -20,7 +22,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void TriggerGameOver() {
+        Counter counter = FindObjectOfType<Counter>();
+
         if (!isGameOver) {
+            SetScore(counter.FallenEnemyBalls);
             isGameOver = true;
 
             FindObjectOfType<SpawnManager>().GameOver();
@@ -30,18 +35,29 @@ public class GameManager : MonoBehaviour
                 player.enabled = false;
             }
 
-            StartCoroutine(LoadScoreScene());
+            StartCoroutine(LoadGameOverScene());
         }
     }
 
-    private IEnumerator LoadScoreScene() {
+    public int GameScore {
+        get {
+            return gameScore;
+        }
+        private set {
+            gameScore = value;
+        }
+    }
+
+    public void SetScore(int score) {
+        gameScore = score;
+    }
+
+    private IEnumerator LoadGameOverScene() {
         Debug.Log("Game over! Transitioning to the score screen.");
 
         yield return new WaitForSeconds(2.0f);
 
         SceneManager.LoadScene("GameOver");
     }
-
-    public bool IsGameOver => isGameOver;
 
 }

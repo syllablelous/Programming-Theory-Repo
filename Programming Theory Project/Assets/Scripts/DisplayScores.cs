@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class DisplayScores : MonoBehaviour
 {
+    // public TextMeshProUGUI scoreText;
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+        int playerScore = GameManager.Instance.GameScore;
+        string playerName = MainManager.Instance.Username;
+
+        Debug.Log("Congratulations " + playerName + "! You got a score of: " + playerScore);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
