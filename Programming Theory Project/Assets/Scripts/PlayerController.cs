@@ -10,6 +10,8 @@ public class PlayerController : BallController
     public bool hasPowerup;
     public GameObject powerupIndicator;
     
+    private int fallCount;
+    private bool isGameOver = false;
 
     
     // Start is called before the first frame update
@@ -21,17 +23,24 @@ public class PlayerController : BallController
 
     // Update is called once per frame
     void Update() {
-        float forwardInput = Input.GetAxis("Vertical");
-        Move(focalPoint.transform.forward * forwardInput);
-        // playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
-        powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
+        if (!isGameOver) {
+            float forwardInput = Input.GetAxis("Vertical");
+            Move(focalPoint.transform.forward * forwardInput);
+            // playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+            powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
 
-        CheckFall();
+            CheckFall();
+        }
     }
 
     public override void CheckFall() {
         if (transform.position.y < fallThreshold) {
-            Respawn(); // Call respawn method if player fell from the platform.
+            fallCount++;
+            if (fallCount > 3) {
+                GameOver();
+            } else {
+                Respawn(); // Call respawn method if player fell from the platform.
+            }
         }
     }
 
@@ -44,6 +53,13 @@ public class PlayerController : BallController
         ballRb.angularVelocity = Vector3.zero;
 
         Debug.Log("Player has respawned at the starting position!");
+    }
+
+    private void GameOver() {
+        Debug.Log("Game Over! The player has exceeded the maximum fall limit.");
+        isGameOver = true;
+
+        FindObjectOfType<SpawnManager>().GameOver();
     }
 
     private void OnTriggerEnter(Collider other) {

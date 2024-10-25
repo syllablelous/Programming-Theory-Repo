@@ -17,20 +17,28 @@ public class SpawnManager : MonoBehaviour
     public int waveNumber = 1;
     public GameObject powerupPrefab;
 
+    private bool isGameOver = false;
+
+    private GameObject[] enemies;
+
 
     // Start is called before the first frame update
     void Start() {
-        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
-        SpawnEnemyWave(waveNumber);
+        if (!isGameOver) {
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+            SpawnEnemyWave(waveNumber);
+        }
     }
 
     // Update is called once per frame
     void Update() {
-        enemyCount = FindObjectsOfType<Enemy>().Length;
-        if (enemyCount == 0) {
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
-            waveNumber++;
-            SpawnEnemyWave(waveNumber);
+        if (!isGameOver) {
+            enemyCount = FindObjectsOfType<Enemy>().Length;
+            if (enemyCount == 0) {
+                Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+                waveNumber++;
+                SpawnEnemyWave(waveNumber);
+            }
         }
     }
 
@@ -42,9 +50,20 @@ public class SpawnManager : MonoBehaviour
     }
 
     void SpawnEnemyWave(int enemiesToSpawn) {
-        for (int i = 0; i < enemiesToSpawn; i++) {
-            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        if (!isGameOver) {
+            for (int i = 0; i < enemiesToSpawn; i++) {
+                Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+            }
         }
     }
 
+    public void GameOver() {
+        isGameOver = true;
+        Debug.Log("Game Over! Stopping all enemy spawns and movement.");
+
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        foreach (Enemy enemy in enemies) {
+            enemy.StopMovement();
+        }
+    }
 }

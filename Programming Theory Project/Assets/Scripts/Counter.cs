@@ -26,7 +26,7 @@ public class Counter : MonoBehaviour
             enemyCount.text = "Fallen Enemy Balls: " + fallenEnemyBalls;
         } else {
             fallenPlayerBalls += 1;
-            playerCount.text = "Fallen Player Balls: " + fallenPlayerBalls;
+            playerCount.text = "Fallen Player Balls: " + fallenPlayerBalls + "/3";
         }
     }
 }

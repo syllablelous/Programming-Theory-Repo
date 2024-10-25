@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : BallController
 {
     private GameObject player;
+    private bool isGameOver = false;
 
     // Start is called before the first frame update
     protected override void Start() {
@@ -14,9 +15,15 @@ public class Enemy : BallController
 
     // Update is called once per frame
     void Update() {
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-        Move(lookDirection);
+        if (!isGameOver) {
+            Vector3 lookDirection = (player.transform.position - transform.position).normalized;
+            Move(lookDirection);
 
-        CheckFall();
+            CheckFall();
+        } 
+    }
+
+    public void StopMovement() {
+        isGameOver = true;
     }
 }
