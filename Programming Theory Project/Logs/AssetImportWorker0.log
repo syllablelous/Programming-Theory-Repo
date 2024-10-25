@@ -2545,3 +2545,12 @@ AssetImportParameters requested are different than current active one (requested
   custom:scripting/monoscript/fileName/StartMenuHandler.cs: 4a2f58f64b48dd8425e6472293d2adbb -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:scripting/precompiled-assembly-types:Assembly-CSharp: 401e968b4570f78326a966368e7ce983 -> 7767a54691f65735b7634be36e900770
+========================================================================
+Received Import Request.
+  Time since last request: 5213.917894 seconds.
+  path: Assets/Scenes/GameOver.unity
+  artifactKey: Guid(56ef5dd309e774395a6732869bc236bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/GameOver.unity using Guid(56ef5dd309e774395a6732869bc236bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '8a991e9ed518cb82a93809e003a9ca1d') in 0.151444 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
