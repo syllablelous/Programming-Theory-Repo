@@ -6,13 +6,6 @@ public class RotateCamera : MonoBehaviour
 {
     [SerializeField] private bool autoRotate = false;
     public float rotationSpeed = 2.0f;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

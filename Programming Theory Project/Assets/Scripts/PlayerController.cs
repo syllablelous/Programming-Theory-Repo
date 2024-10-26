@@ -14,19 +14,16 @@ public class PlayerController : BallController
     private bool isGameOver = false;
 
     
-    // Start is called before the first frame update
     protected override void Start() {
         base.Start();
         focalPoint = GameObject.Find("Focal Point");
         startPosition = this.transform.position;
     }
 
-    // Update is called once per frame
     void Update() {
         if (!isGameOver) {
             float forwardInput = Input.GetAxis("Vertical");
             Move(focalPoint.transform.forward * forwardInput);
-            // playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
             powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
 
             CheckFall();
@@ -59,7 +56,6 @@ public class PlayerController : BallController
         Debug.Log("Game Over! The player has exceeded the maximum fall limit.");
         isGameOver = true;
 
-        // FindObjectOfType<SpawnManager>().GameOver();
         GameManager.Instance.TriggerGameOver();
     }
 
@@ -87,7 +83,5 @@ public class PlayerController : BallController
             Debug.Log("Collided with " + collision.gameObject.name + " with powerup set to " + hasPowerup);
             enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
         }
-    }
-
-    
+    } 
 }

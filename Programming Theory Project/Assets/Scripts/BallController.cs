@@ -9,16 +9,10 @@ public class BallController : MonoBehaviour
 
     protected float fallThreshold = -10.0f;
 
-    // Start is called before the first frame update
+
     protected virtual void Start() {
         ballRb = GetComponent<Rigidbody>();
     }
-
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
 
     public virtual void Move(Vector3 direction) {
         ballRb.AddForce(direction * speed);
@@ -29,6 +23,4 @@ public class BallController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    
 }

@@ -31,6 +31,4 @@ public class MenuUIHandler : MonoBehaviour
         input = s;
         Debug.Log(input);
     }
-
-
 }

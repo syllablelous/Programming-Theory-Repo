@@ -9,18 +9,12 @@ public class SpawnManager : MonoBehaviour
 {
     private float spawnRange = 9;
 
-
-    // private Counter scoreCheck = new Counter();
-
     public GameObject enemyPrefab;
     public int enemyCount;
     public int waveNumber = 1;
     public GameObject powerupPrefab;
 
     private bool isGameOver = false;
-
-    private GameObject[] enemies;
-
 
     // Start is called before the first frame update
     void Start() {
