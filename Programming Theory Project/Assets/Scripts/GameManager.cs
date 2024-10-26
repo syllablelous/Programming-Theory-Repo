@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    // ABSTRACTION
     public void TriggerGameOver() {
         Counter counter = FindObjectOfType<Counter>();
 
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ENCAPSULATION
     public int GameScore {
         get {
             return gameScore;

@@ -54,10 +54,9 @@ public class DisplayScores : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         DisplayDetails();
-
-        // Debug.Log("Congratulations " + playerName + "! You got a score of: " + playerScore);
     }
 
+    // ABSTRACTION
     public void DisplayDetails() {
         playerScore = GameManager.Instance.GameScore;
         playerName = MainManager.Instance.Username;
@@ -77,6 +76,7 @@ public class DisplayScores : MonoBehaviour
         hiScoreText.text = "" + highestScore;
     }
 
+    // ABSTRACTION
     public void GameAgain() {
         WriteData();
 

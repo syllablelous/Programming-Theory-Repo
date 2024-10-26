@@ -1,0 +1,11 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="DisplayScores">
+			<method name="GameAgain"/>
+		</type>
+		<type fullname="MenuUIHandler">
+			<method name="ReadStringInput"/>
+			<method name="SubmitName"/>
+		</type>
+	</assembly>
+</linker>

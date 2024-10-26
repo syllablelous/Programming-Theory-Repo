@@ -18,6 +18,7 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    // ENCAPSULATION
     public string Username {
         get {
             return username;

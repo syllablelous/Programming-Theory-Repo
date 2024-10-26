@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class PlayerController : BallController
 {
     private GameObject focalPoint;
@@ -13,7 +14,7 @@ public class PlayerController : BallController
     private int fallCount;
     private bool isGameOver = false;
 
-    
+    // POLYMORPHISM
     protected override void Start() {
         base.Start();
         focalPoint = GameObject.Find("Focal Point");
@@ -30,6 +31,7 @@ public class PlayerController : BallController
         }
     }
 
+    // POLYMORPHISM
     public override void CheckFall() {
         if (transform.position.y < fallThreshold) {
             fallCount++;
